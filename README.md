@@ -1,5 +1,4 @@
 
-A Reduced-Order Spinor-Field Framework for H₂ and CO: MEAO-Inspired Bonding, Information Flow, and Hopf-Fiber Diagnostics
 # MEAO Spinor Lab
 
 ## A Reduced-Order Spinor-Field Framework for H₂ and CO: MEAO-Inspired Bonding, Information Flow, and Hopf-Fiber Diagnostics
@@ -140,7 +139,7 @@ Depending on the selected normalization convention, $\rho$ can be interpreted ei
 
 $$
 \int_\Omega \rho\,dA=1
-\qquad\text{or}\qquad
+\qquad\mathrm{or}\qquad
 \frac{1}{A}\int_\Omega\rho\,dA=\rho_{\mathrm{target}}.
 $$
 
@@ -150,14 +149,14 @@ The complete private solver uses a controlled Pauli/Gross-Pitaevskii-like model 
 
 $$
 i\,\partial_t\Psi=
-\left[
+[
 -\kappa\nabla^2
 +V_{\mathrm{mol}}
 +V_{\mathrm{light}}
 +g\rho
 +\Omega(x,y,t)\sigma_x
 +H_{\mathrm{SOC}}
-\right]\Psi
+]\Psi
 +i\Gamma(\rho)\Psi.
 $$
 
@@ -165,21 +164,21 @@ The public mini-demo deliberately omits the private spin-orbit kernel, controlle
 
 $$
 i\,\partial_t\Psi=
-\left[
+[
 -\kappa\nabla^2
 +V(x,y,t)
 +g\rho
 +\Omega(x,y,t)\sigma_x
-\right]\Psi,
+]\Psi,
 $$
 
 advanced with a unitary Strang composition:
 
 $$
 U(\Delta t)\approx
-U_K\!\left(\frac{\Delta t}{2}\right)
+U_K\!(\frac{\Delta t}{2})
 U_{\mathrm{local}}(\Delta t)
-U_K\!\left(\frac{\Delta t}{2}\right).
+U_K\!(\frac{\Delta t}{2}).
 $$
 
 ### 3. Molecular scaffold
@@ -207,7 +206,7 @@ For the public concept code, the antibonding channel is Gram-Schmidt orthogonali
 A reduced Morse coordinate supplies an illustrative bond plant,
 
 $$
-V_M(R)=D_e\left(1-e^{-a(R-R_e)}\right)^2-D_e.
+V_M(R)=D_e(1-e^{-a(R-R_e)})^2-D_e.
 $$
 
 These orbitals and parameters are intentionally generic. They are **molecular shape models**, not basis-set electronic-structure solutions.
@@ -223,8 +222,8 @@ The public demo includes Gaussian and HG envelopes of the form
 $$
 E_{mn}^{\mathrm{HG}}(x,y,t)
 \propto
-H_m\!\left(\frac{\sqrt2x}{w}\right)
-H_n\!\left(\frac{\sqrt2y}{w}\right)
+H_m\!(\frac{\sqrt2x}{w})
+H_n\!(\frac{\sqrt2y}{w})
 e^{-(x^2+y^2)/w^2}
 e^{-i\omega t}.
 $$
@@ -236,7 +235,7 @@ For radial index $p=0$, the abbreviated LG field is
 $$
 E_{0\ell}^{\mathrm{LG}}(r,\theta,t)
 \propto
-\left(\frac{\sqrt2r}{w}\right)^{|\ell|}
+(\frac{\sqrt2r}{w})^{|\ell|}
 e^{-r^2/w^2}
 e^{i(\ell\theta-\omega t)}.
 $$
@@ -372,7 +371,7 @@ $$
 For a normalized local spinor, $\mathbf n$ lies on $S^2$. The public demo also reports a spin-$z$ QFI-like quantity for the aggregate state,
 
 $$
-F_Q[\sigma_z]=4\left(\langle\sigma_z^2\rangle-\langle\sigma_z\rangle^2\right).
+F_Q[\sigma_z]=4(\langle\sigma_z^2\rangle-\langle\sigma_z\rangle^2).
 $$
 
 ### Curvature and topological charge
@@ -391,7 +390,7 @@ $$
 q(x,y,t)=
 \frac{1}{4\pi}
 \mathbf n\cdot
-\left(\partial_x\mathbf n\times\partial_y\mathbf n\right),
+(\partial_x\mathbf n\times\partial_y\mathbf n),
 $$
 
 with integrated charge
@@ -407,9 +406,10 @@ The abbreviated field OAM diagnostic is
 $$
 \langle L_z\rangle
 \propto
-\frac{\sum_s\operatorname{Im}
-\int\psi_s^*(x\partial_y-y\partial_x)\psi_s\,dA}
-{\int\rho\,dA}.
+\frac{
+\sum_s\mathrm{Im}
+(\int\psi_s^*(x\partial_y-y\partial_x)\psi_s\,dA)
+}{\int\rho\,dA}.
 $$
 
 It is expressed in reduced units and should not be read as a calibrated photon or electron angular momentum measurement.
@@ -444,7 +444,7 @@ The even subalgebra
 
 $$
 \mathrm{Cl}^+(3,0)=
-\operatorname{span}\{1,e_{12},e_{23},e_{31}\}
+\mathrm{span}\{1,e_{12},e_{23},e_{31}\}
 $$
 
 is quaternion-like. A minimal-left-ideal representative is formed with
@@ -461,7 +461,7 @@ $$
 \rho_c=\Phi_L\widetilde{\Phi_L},
 $$
 
-where $\widetilde{\phantom{A}}$ denotes reversion.
+For any multivector $M$, $\widetilde{M}$ denotes reversion.
 
 The public demo includes a compact, generic $\mathrm{Cl}(3,0)$ geometric-product engine and extracts scalar, vector, bivector, pseudoscalar, rotor-angle, and purity-like descriptors.
 
@@ -473,13 +473,15 @@ The actual order is
 
 $$
 \Psi_t
-\xrightarrow{\text{PDE}}
+\longrightarrow
 \Psi_{t+\Delta t}
-\xrightarrow{\text{diagnostics}}
+\longrightarrow
 x_t
-\xrightarrow{\text{PCA}}
+\longrightarrow
 z_t.
 $$
+
+The three arrows denote, in order, the PDE update, diagnostic extraction, and PCA projection.
 
 ### PCA compression
 
@@ -520,7 +522,7 @@ with
 
 $$
 A=
-\left(X^TX+\lambda I\right)^{-1}X^TY.
+(X^TX+\lambda I)^{-1}X^TY.
 $$
 
 Later states are held out for validation. The DMD matrix may contain rotation, shear, contraction, expansion, or mixed behavior. It is not constrained to be a quaternion rotor or Lorentz transformation.
@@ -544,8 +546,8 @@ is a point on $S^3$. The Hopf map sends it to $S^2$:
 $$
 H(z_1,z_2)=
 \begin{pmatrix}
-2\operatorname{Re}(z_1^*z_2)\\
-2\operatorname{Im}(z_1^*z_2)\\
+2\mathrm{Re}(z_1^*z_2)\\
+2\mathrm{Im}(z_1^*z_2)\\
 |z_1|^2-|z_2|^2
 \end{pmatrix}.
 $$
@@ -560,7 +562,7 @@ maps to the same point on $S^2$. Its complete preimage is a $U(1)$ fiber,
 
 $$
 \mathcal F_{\mathbf n}=
-\left\{e^{i\alpha}(z_1,z_2):0\le\alpha<2\pi\right\}.
+\{e^{i\alpha}(z_1,z_2):0\le\alpha<2\pi\}.
 $$
 
 The complete private dashboard tracks 236 stable featured $S^2$ display identities and lifts 14 selected representatives to complete Hopf fibers. The public demo constructs one complete fiber from its final global spinor and stereographically projects it from $S^3$ into $\mathbb R^3$.
