@@ -1,4 +1,4 @@
-# EAO Spinor Lab: Core Equation Spine
+# MEAO Spinor Lab: Core Equation Spine
 
 ## Scope
 
